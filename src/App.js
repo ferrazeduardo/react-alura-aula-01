@@ -7,29 +7,38 @@ import './assets/App.css'
 export default class App extends Component {
   constructor() {
     super();
-    this.notas = [];
-    this.state = {};
+    this.state = {
+      notas: []
+    };
   }
 
 
   criarNota(titulo, texto) {
-    const nota = {
+    const novaNota = {
       titulo,
       texto
     }
 
-    this.notas.push(nota);
-    
-    this.setState({
-        notas: this.notas
-    })
+    const novoArrayNotas = [...this.state.notas, novaNota];
+    const novoEstado = {
+      notas: novoArrayNotas
+    }
+    this.setState(novoEstado)
+  }
+
+  deletarNota(index) {
+    let arrayNotas = this.state.notas;
+    arrayNotas.splice(index, 1);
+    this.setState({ notas: arrayNotas });
   }
 
   render() {
     return (
       <section>
         <FormularioCadastro criarNota={this.criarNota.bind(this)} />
-        <ListaDeNotas notas={this.notas} />
+        <ListaDeNotas
+          apagarNota={this.deletarNota.bind(this)}
+          notas={this.state.notas} />
       </section>
     );
   }

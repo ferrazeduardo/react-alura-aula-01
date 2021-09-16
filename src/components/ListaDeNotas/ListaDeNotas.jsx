@@ -14,7 +14,10 @@ export default class ListaDeNotas extends Component {
                 {this.props.notas.map((nota, index) => {
                     return (
                         <li className="lista-notas_item" key={index}>
-                            <CardNota  nota={nota} />
+                            <CardNota 
+                            index={index}
+                            apagarNota={this.props.apagarNota}
+                            nota={nota} />
                         </li>
                     )
                 })
