@@ -9,6 +9,7 @@ export default class CardNota extends Component {
     // }
 
     apagar(){
+        console.log('apagar1')
         const indece = this.props.index;
         this.props.apagarNota(indece);
     }
@@ -20,6 +21,7 @@ export default class CardNota extends Component {
                     <h3 className="card-nota_titulo">{this.props.nota.titulo}</h3>
                     {/* <img src={deleteSVG} /> */}
                     <DeleteSVG onClick={this.apagar.bind(this)} />
+                    <h4>{this.props.categoria}</h4>
                 </header>
                 <p className="card-nota_text">{this.props.nota.texto}</p>
             </section>
